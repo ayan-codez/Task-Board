@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Board - Manage Your Tasks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1> Task Board</h1>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-label">Total Tasks:</span>
+                    <span class="stat-value" id="totalTasks">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Completed:</span>
+                    <span class="stat-value" id="completedTasks">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="add-task-section">
+            <h2>Add New Task</h2>
+            <form id="taskForm">
+                <input type="text" id="taskTitle" placeholder="Task title" required>
+                <textarea id="taskDescription" placeholder="Task description" rows="3"></textarea>
+                <select id="taskPriority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+
+        <div class="board">
+            <div class="column" id="todo-column">
+                <div class="column-header">
+                    <h2> To Do</h2>
+                    <span class="task-count" id="todo-count">0</span>
+                </div>
+                <div class="tasks-container" id="todo-tasks" data-status="todo"></div>
+            </div>
+
+            <div class="column" id="inprogress-column">
+                <div class="column-header">
+                    <h2> In Progress</h2>
+                    <span class="task-count" id="inprogress-count">0</span>
+                </div>
+                <div class="tasks-container" id="inprogress-tasks" data-status="inprogress"></div>
+            </div>
+
+            <div class="column" id="done-column">
+                <div class="column-header">
+                    <h2> Done</h2>
+                    <span class="task-count" id="done-count">0</span>
+                </div>
+                <div class="tasks-container" id="done-tasks" data-status="done"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Task</h2>
+            <form id="editForm">
+                <input type="text" id="editTitle" placeholder="Task title" required>
+                <textarea id="editDescription" placeholder="Task description" rows="3"></textarea>
+                <select id="editPriority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <select id="editStatus">
+                    <option value="todo">To Do</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                <div class="modal-buttons">
+                    <button type="submit">Save Changes</button>
+                    <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
